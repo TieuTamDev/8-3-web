@@ -1,0 +1,245 @@
+/* Dropdown Button */
+.dropbtn {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial Unicode MS', 'Arial', sans-serif;
+    outline: none;
+    position: relative;
+}
+
+
+.note-pair::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 30;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: linear-gradient(135deg, #ffffff, #f0f2f5);
+    min-width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    padding: 10px 0;
+    max-height: 150px; /* Giới hạn chiều cao để hiển thị tối đa ~5 bài (dựa trên padding và font-size) */
+    overflow-y: auto; /* Thêm thanh cuộn dọc nếu có nhiều hơn 5 bài */
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp, bo góc và bỏ dấu mũi tên */
+.dropdown-content::-webkit-scrollbar {
+    width: 8px; /* Độ rộng của thanh cuộn */
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background: #f0f2f5; /* Màu nền của thanh cuộn, khớp với gradient nền */
+    border-radius: 15px; /* Bo góc lớn hơn cho track */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* Gradient giống nút và slider */
+    border-radius: 15px; /* Bo góc lớn hơn cho thumb */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+    transition: background 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff4040, #45b7d1); /* Gradient khi hover, giống nút khi hover */
+}
+
+/* Ẩn nút lên/xuống (dấu mũi tên) trên WebKit */
+.dropdown-content::-webkit-scrollbar-button {
+    display: none; /* Ẩn hoàn toàn các nút lên/xuống */
+}
+
+/* Animation cho dropdown */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dropdown link */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    width: 250px; /* Giới hạn chiều rộng */
+    overflow: hidden; /* Ẩn phần bị tràn */
+    white-space: nowrap; /* Không xuống dòng */
+    position: relative; /* Giúp text di chuyển bên trong */
+}
+
+/* Tạo một container để chứa text */
+.scroll-container {
+    width: 100%; /* Giới hạn text không bị tràn */
+    overflow: hidden; /* Ẩn phần text khi nó chạy ra ngoài */
+    display: inline-block;
+}
+
+/* Text chạy ngang */
+.scroll-text {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap; /* Giữ nguyên không xuống dòng */
+}
+
+/* Khi hover vào thì text di chuyển ngang */
+.dropdown-content a:hover .scroll-text {
+    animation: scroll-left 5s linear forwards;
+}
+
+/* Keyframes cho hiệu ứng */
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-150%); /* Dịch ra ngoài để thấy hiệu ứng */
+    }
+}
+
+/* Khi hover vào thì text di chuyển ngang */
+.dropdown-content a:hover .scroll-text {
+    transform: translateX(-100%);
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border-radius: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background: linear-gradient(45deg, #ff4040, #45b7d1);
+    transform: scale(1.05);
+}
+
+/* CSS cho nút âm lượng (giữ nguyên, di chuyển gần dropdown) */
+.music-controls {
+    position: absolute;
+    top: 10px;
+    right: 80px; /* Đặt cách dropdown 205px (min-width 200px + 5px margin) để tạo khoảng cách 5px */
+    z-index: 30;
+    color: white;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+/* CSS cho biểu tượng loa và thanh kéo (cải thiện giao diện) */
+.volume-control {
+    position: relative;
+    display: inline-block;
+}
+
+.volume-icon {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 25px; /* Tạo hình oval giống dropdown */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease; /* Thêm transition cho hover */
+    position: relative; /* Để chứa gạch chéo khi mute */
+}
+
+.volume-icon:hover {
+    background: linear-gradient(45deg, #ff4040, #45b7d1); /* Thay đổi gradient khi hover */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+    color: white;
+}
+
+.volume-icon.muted::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: white; /* Màu gạch chéo khớp với màu chữ */
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+
+.volume-slider {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Tăng chiều rộng để đẹp hơn */
+    padding: 10px;
+    background: linear-gradient(135deg, #ffffff, #f0f2f5); /* Gradient giống dropdown */
+    border-radius: 15px; /* Tăng bo góc để hiện đại */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+    display: none; /* Ẩn mặc định */
+    animation: slideDown 0.3s ease-out; /* Thêm animation khi hiển thị */
+}
+
+.volume-control:hover .volume-slider {
+    display: block; /* Hiển thị khi hover */
+}
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+    -webkit-appearance: none; /* Xóa style mặc định của trình duyệt */
+    height: 6px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4); /* Gradient cho thanh slider */
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2); /* Phóng to khi hover */
+}

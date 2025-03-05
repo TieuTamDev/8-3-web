@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #b784db;
+}
+
+.envelope {
+    position: relative;
+    cursor: pointer;
+}
+
+.back {
+    position: relative;
+    width: 500px; /* Chiều rộng gấp 2 lần chiều cao */
+    height: 250px; /* Chiều cao giữ nguyên */
+    background: #6247aa;
+}
+
+.front {
+    position: absolute;
+    border-right: 260px solid #815ac0; /* Tăng gấp đôi chiều rộng tam giác */
+    border-top: 125px solid transparent; /* Điều chỉnh chiều cao tam giác */
+    border-bottom: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 240px; /* Dịch sang phải để căn giữa */
+    z-index: 3;
+}
+
+.front:before {
+    content: "";
+    position: absolute;
+    border-left: 260px solid #815ac0; /* Tăng gấp đôi chiều rộng tam giác */
+    border-top: 125px solid transparent;
+    border-bottom: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: -125px; /* Điều chỉnh theo chiều cao mới */
+    left: -240px; /* Dịch sang trái để khớp */
+}
+
+.front:after {
+    content: "";
+    position: absolute;
+    border-bottom: 130px solid #7251b5; /* Tăng chiều cao tam giác dưới */
+    border-left: 250px solid transparent; /* Tăng chiều rộng cơ sở */
+    border-right: 250px solid transparent;
+    height: 0;
+    width: 0;
+    top: -5px;
+    left: -240px; /* Dịch sang trái */
+}
+
+.top {
+    position: absolute;
+    border-top: 130px solid #9163cb; /* Tăng chiều cao tam giác trên */
+    border-left: 250px solid transparent; /* Tăng chiều rộng cơ sở */
+    border-right: 250px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    transform-origin: top;
+    transition: 0.4s;
+    z-index: 4;
+}
+
+.envelope:hover .top {
+    transform: rotateX(160deg);
+    z-index: 1;
+}
+
+.letter {
+    position: absolute;
+    background: white;
+    width: 460px; 
+    height: 230px; 
+    top: 10px;
+    left: 20px; 
+    transition: 0.2s;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Thêm khoảng cách để text không bị sát mép */
+    box-sizing: border-box; /* Giữ kích thước cố định */
+    overflow: hidden; /* Ẩn phần text bị tràn */
+}
+
+.envelope:hover .letter {
+    transform: translateY(-120px); /* Tăng khoảng cách nâng lên để khớp kích thước mới */
+    z-index: 5;
+}
+
+.text1 {
+    position: absolute;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    top: 250px; /* Đặt vị trí dưới bức thư */
+    left: 50%;
+    transform: translateX(-50%); /* Căn giữa */
+    white-space: nowrap; /* Không xuống dòng */
+    overflow: hidden; /* Ẩn phần chưa xuất hiện */
+    border-right: 3px solid white; /* Hiệu ứng con trỏ gõ */
+    
+    animation: typing 4s steps(30) forwards, blink 0.6s infinite;
+}
+/* Hiệu ứng đánh máy */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 110ch ; }
+}
+
+/* Hiệu ứng con trỏ nhấp nháy */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.text {
+    text-align: center; /* Căn giữa */
+    font-size: 18px; /* Tăng nhẹ kích thước chữ */
+    font-family: 'Poppins', Arial, sans-serif; /* Font chữ đẹp */
+    margin-top: 20px;
+    font-weight: 600; /* Chữ đậm vừa phải */
+    color: black;
+    position: relative;
+    max-width: 80%; /* Giới hạn chiều rộng để chữ không tràn */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6; /* Giãn dòng cho dễ đọc */
+    word-break: break-word; /* Xuống dòng khi cần */
+    padding: 10px 15px; /* Thêm khoảng cách cho dễ nhìn */
+    background: rgba(255, 255, 255, 0.2); /* Nền nhẹ giúp nổi bật */
+    border-radius: 10px; /* Bo góc mềm mại */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
+    padding-bottom: 10px;
+}
+
+/* Hiệu ứng chữ khi hover */
+.text:hover {
+    transform: scale(1.05); /* Phóng to nhẹ */
+    transition: 0.3s ease-in-out;
+}
+
+.text a {
+    z-index: 6;
+    color: white; /* Màu chữ trắng */
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    font-weight: bold; /* Chữ đậm hơn */
+    padding: 8px 16px; /* Tạo khoảng cách bên trong */
+    border-radius: 20px; /* Bo góc */
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Hiệu ứng gradient */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
+    display: inline-block; /* Giúp padding hoạt động đúng */
+    box-shadow: 0 4px 8px rgba(255, 75, 43, 0.4); /* Đổ bóng */
+}
+
+/* Hiệu ứng hover */
+.text a:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c); /* Đổi màu khi hover */
+    transform: scale(1.1); /* Phóng to nhẹ */
+    box-shadow: 0 6px 12px rgba(255, 75, 43, 0.6);
+}
+
+/* Hiệu ứng khi nhấn */
+.text a:active {
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
+}
+
+/* Heart */
+.heart {
+    background-color: red;
+    height: 70px;
+    width: 70px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    transform: rotate(-45deg);
+    box-shadow: -5px 10px 90px red;
+    animation: abc 0.6s linear infinite;
+}
+
+@keyframes abc {
+    0% { transform: rotate(-45deg) scale(1.05); }
+    70% { transform: rotate(-45deg) scale(1.0); }
+    100% { transform: rotate(-45deg) scale(0.8); }
+}
+
+.heart:before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    top: -35px;
+    border-radius: 50px;
+}
+
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    right: -43px;
+    border-radius: 50px;
+}   

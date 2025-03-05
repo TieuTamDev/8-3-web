@@ -1,0 +1,12 @@
+.banner-text {
+    position: relative;
+    top: 50%;
+    right: 20%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.banner-text h2{
+    font-size: 65px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
