@@ -1,11 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #b784db;
+    background: linear-gradient(135deg, #c71a23, #5705a3);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Particles background effect */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-10px) translateX(20px);
+    }
+    75% {
+        transform: translateY(-30px) translateX(-10px);
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 20px;
 }
 
 .envelope {
@@ -76,137 +123,232 @@ body {
 
 .letter {
     position: absolute;
-    background: white;
+    background: linear-gradient(135deg, #fff, #f5f5f5);
     width: 460px; 
     height: 230px; 
     top: 10px;
     left: 20px; 
-    transition: 0.2s;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px; /* Thêm khoảng cách để text không bị sát mép */
-    box-sizing: border-box; /* Giữ kích thước cố định */
-    overflow: hidden; /* Ẩn phần text bị tràn */
+    padding: 20px;  
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .envelope:hover .letter {
-    transform: translateY(-120px); /* Tăng khoảng cách nâng lên để khớp kích thước mới */
+    transform: translateY(-100px);
     z-index: 5;
 }
 
 .text1 {
     position: absolute;
     color: white;
-    font-family: sans-serif;
+    font-family: 'Dancing Script', cursive;
     font-size: 20px;
-    top: 250px; /* Đặt vị trí dưới bức thư */
+    margin-top: 20px;
+    text-align: center;
+    top: 600px; /* Đặt vị trí dưới bức thư */
     left: 50%;
     transform: translateX(-50%); /* Căn giữa */
     white-space: nowrap; /* Không xuống dòng */
     overflow: hidden; /* Ẩn phần chưa xuất hiện */
     border-right: 3px solid white; /* Hiệu ứng con trỏ gõ */
-    
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     animation: typing 4s steps(30) forwards, blink 0.6s infinite;
 }
 /* Hiệu ứng đánh máy */
 @keyframes typing {
     from { width: 0; }
-    to { width: 110ch ; }
+    to { width: 105ch ; }
 }
 
 /* Hiệu ứng con trỏ nhấp nháy */
 @keyframes blink {
     50% { border-color: transparent; }
 }
-
 .text {
-    text-align: center; /* Căn giữa */
-    font-size: 18px; /* Tăng nhẹ kích thước chữ */
-    font-family: 'Poppins', Arial, sans-serif; /* Font chữ đẹp */
-    margin-top: 20px;
-    font-weight: 600; /* Chữ đậm vừa phải */
-    color: black;
-    position: relative;
-    max-width: 80%; /* Giới hạn chiều rộng để chữ không tràn */
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6; /* Giãn dòng cho dễ đọc */
-    word-break: break-word; /* Xuống dòng khi cần */
-    padding: 10px 15px; /* Thêm khoảng cách cho dễ nhìn */
-    background: rgba(255, 255, 255, 0.2); /* Nền nhẹ giúp nổi bật */
-    border-radius: 10px; /* Bo góc mềm mại */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
-    padding-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+    color: #333;
+    max-width: 80%;
+    line-height: 1.6;
+    word-break: break-word;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-/* Hiệu ứng chữ khi hover */
-.text:hover {
-    transform: scale(1.05); /* Phóng to nhẹ */
-    transition: 0.3s ease-in-out;
+.text p {
+    font-size: 18px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+}
+
+.text:hover p {
+    transform: scale(1.05);
 }
 
 .text a {
     z-index: 6;
-    color: white; /* Màu chữ trắng */
-    text-decoration: none; /* Bỏ gạch chân mặc định */
-    font-weight: bold; /* Chữ đậm hơn */
-    padding: 8px 16px; /* Tạo khoảng cách bên trong */
-    border-radius: 20px; /* Bo góc */
-    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Hiệu ứng gradient */
-    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
-    display: inline-block; /* Giúp padding hoạt động đúng */
-    box-shadow: 0 4px 8px rgba(255, 75, 43, 0.4); /* Đổ bóng */
-}
-
-/* Hiệu ứng hover */
-.text a:hover {
-    background: linear-gradient(45deg, #ff4b2b, #ff416c); /* Đổi màu khi hover */
-    transform: scale(1.1); /* Phóng to nhẹ */
-    box-shadow: 0 6px 12px rgba(255, 75, 43, 0.6);
-}
-
-/* Hiệu ứng khi nhấn */
-.text a:active {
-    transform: scale(0.95); /* Thu nhỏ nhẹ khi nhấn */
-}
-
-/* Heart */
-.heart {
-    background-color: red;
-    height: 70px;
-    width: 70px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
     position: relative;
-    top: 20px;
-    left: 20px;
-    transform: rotate(-45deg);
-    box-shadow: -5px 10px 90px red;
-    animation: abc 0.6s linear infinite;
+    overflow: hidden;
 }
 
-@keyframes abc {
-    0% { transform: rotate(-45deg) scale(1.05); }
-    70% { transform: rotate(-45deg) scale(1.0); }
-    100% { transform: rotate(-45deg) scale(0.8); }
+.text a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s;
+}
+
+.text a:hover:before {
+    left: 100%;
+}
+
+.text a:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
+}
+
+.text a:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 10px rgba(255, 75, 43, 0.4);
+}
+
+/* Heart animation */
+.heart-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.heart {
+    background-color: #ff416c;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 40px rgba(255, 65, 108, 0.7);
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: rotate(-45deg) scale(1);
+    }
+    14% {
+        transform: rotate(-45deg) scale(1.3);
+    }
+    28% {
+        transform: rotate(-45deg) scale(1);
+    }
+    42% {
+        transform: rotate(-45deg) scale(1.3);
+    }
+    70% {
+        transform: rotate(-45deg) scale(1);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+.heart:before, .heart:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ff416c;
+    border-radius: 50%;
 }
 
 .heart:before {
-    content: "";
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background-color: red;
-    top: -35px;
-    border-radius: 50px;
+    top: -25px;
 }
 
 .heart:after {
+    right: -25px;
+}
+/* Small hearts floating animation */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    background-color: rgba(255, 65, 108, 0.7);
+    width: 15px;
+    height: 15px;
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: float-heart 6s linear infinite;
+}
+
+.floating-heart:before, .floating-heart:after {
     content: "";
     position: absolute;
-    width: 70px;
-    height: 70px;
-    background-color: red;
-    right: -43px;
-    border-radius: 50px;
-}   
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 65, 108, 0.7);
+    border-radius: 50%;
+}
+
+.floating-heart:before {
+    top: -7.5px;
+}
+
+.floating-heart:after {
+    right: -7.5px;
+}
+
+@keyframes float-heart {
+    0% {
+        transform: translateY(0) translateX(0) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(20px) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+}
