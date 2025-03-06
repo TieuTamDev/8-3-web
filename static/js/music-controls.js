@@ -1,6 +1,7 @@
 // Hiển thị alert khi trang tải và chờ người dùng xác nhận
 document.addEventListener('DOMContentLoaded', function() {
     alert("Sau khi OK thì hãy click bất kỳ chỗ nào trên trang để nhạc mở nhé! Có thể chọn nhạc ở chỗ 🎵 này nhé! ");
+    startPage(); // Khởi động trang sau khi người dùng nhấp OK trên alert
     var audio = document.getElementById('background-music');
     if (audio) {
         audio.volume = 0.2; // Đặt âm lượng ban đầu là 20% (thay vì 50% trong startPage để nhất quán)
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (audio) {
         setupAutoPlayNext(audio);
     }
-    startPage(); // Khởi động trang sau khi người dùng nhấp OK trên alert
+
 });
 
 document.addEventListener('click', function playMusicOnce() {
@@ -23,45 +24,6 @@ document.addEventListener('click', function playMusicOnce() {
         });
     }
 });
-
-function startPage() {
-    var audio = document.getElementById('background-music');
-    var body = document.body;
-    var volumeSlider = document.getElementById('volume-slider');
-    var volumeIcon = document.querySelector('.volume-icon');
-
-    if (audio) {
-        setupAutoPlayNext(audio);
-    }
-    
-    if (audio && body) {
-        audio.volume = 0.2; // Đặt âm lượng ban đầu là 20% (thay vì 50% để nhất quán với DOMContentLoaded)
-        audio.play().then(() => {
-            console.log("Nhạc bắt đầu phát và trang được kích hoạt");
-            body.classList.remove('not-loaded'); // Hiển thị toàn bộ nội dung
-
-            // Đồng bộ thanh slider với âm lượng 20%
-            if (volumeSlider) {
-                volumeSlider.value = 20; // Đặt giá trị slider về 20 (tương ứng 20%)
-            }
-
-            // Đảm bảo không có trạng thái mute ban đầu
-            if (volumeIcon) {
-                volumeIcon.classList.remove('muted'); // Xóa gạch chéo nếu có
-            }
-
-            // Khởi động lại các hiệu ứng trong script.js (giả định)
-            if (window.initFireworks) window.initFireworks(); // Khởi tạo pháo hoa nếu có
-            if (window.initFlowers) window.initFlowers(); // Khởi tạo hoa nếu có
-            if (window.initAnimations) window.initAnimations(); // Khởi tạo animation text nếu có
-
-            // Thêm sự kiện để chuyển bài khi bài hiện tại kết thúc
-            setupAutoPlayNext(audio);
-        }).catch(error => {
-            console.log("Không thể phát nhạc: ", error);
-        });
-    }
-}
 
 function setupAutoPlayNext(audio) {
     if (!audio) {
