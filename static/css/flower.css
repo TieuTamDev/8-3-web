@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+body.not-loaded {
+  overflow: hidden; /* Ngăn cuộn */
+}
+
 :root {
   --dark-color: #000;
 }

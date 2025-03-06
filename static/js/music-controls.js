@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (audio) {
         setupAutoPlayNext(audio);
     }
-
 });
 
 document.addEventListener('click', function playMusicOnce() {
@@ -24,6 +23,45 @@ document.addEventListener('click', function playMusicOnce() {
         });
     }
 });
+
+function startPage() {
+    var audio = document.getElementById('background-music');
+    var body = document.body;
+    var volumeSlider = document.getElementById('volume-slider');
+    var volumeIcon = document.querySelector('.volume-icon');
+
+    if (audio) {
+        setupAutoPlayNext(audio);
+    }
+    
+    if (audio && body) {
+        audio.volume = 0.2; // Đặt âm lượng ban đầu là 20% (thay vì 50% để nhất quán với DOMContentLoaded)
+        audio.play().then(() => {
+            console.log("Nhạc bắt đầu phát và trang được kích hoạt");
+            body.classList.remove('not-loaded'); // Hiển thị toàn bộ nội dung
+
+            // Đồng bộ thanh slider với âm lượng 20%
+            if (volumeSlider) {
+                volumeSlider.value = 20; // Đặt giá trị slider về 20 (tương ứng 20%)
+            }
+
+            // Đảm bảo không có trạng thái mute ban đầu
+            if (volumeIcon) {
+                volumeIcon.classList.remove('muted'); // Xóa gạch chéo nếu có
+            }
+
+            // Khởi động lại các hiệu ứng trong script.js (giả định)
+            if (window.initFireworks) window.initFireworks(); // Khởi tạo pháo hoa nếu có
+            if (window.initFlowers) window.initFlowers(); // Khởi tạo hoa nếu có
+            if (window.initAnimations) window.initAnimations(); // Khởi tạo animation text nếu có
+
+            // Thêm sự kiện để chuyển bài khi bài hiện tại kết thúc
+            setupAutoPlayNext(audio);
+        }).catch(error => {
+            console.log("Không thể phát nhạc: ", error);
+        });
+    }
+}
 
 function setupAutoPlayNext(audio) {
     if (!audio) {

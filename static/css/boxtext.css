@@ -21,7 +21,7 @@
 /* Điều chỉnh các text để lấy 100% chiều rộng của .animation-box */
 .first-text {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: white;
     position: absolute;
     left: 0; /* Bắt đầu từ mép trái */
@@ -80,7 +80,22 @@
 
 .five-text {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 4.4rem;
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    left: 0; /* Bắt đầu từ mép trái */
+    width: 100%; /* Lấy toàn bộ chiều rộng của .animation-box */    
+    top: 5rem;
+    text-align: center; /* Căn giữa text trong chiều rộng */
+    opacity: 0;
+    animation-name: an5;
+    animation-duration: 15s;
+    animation-delay: 45s;
+}
+
+.six-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4rem;
     color: white;
     position: absolute;
     left: 0; /* Bắt đầu từ mép trái */
@@ -88,9 +103,9 @@
     bottom: 25%;
     text-align: center; /* Căn giữa text trong chiều rộng */
     opacity: 0;
-    animation-name: an5;
+    animation-name: an6;
     animation-duration: 15s;
-    animation-delay: 45s;
+    animation-delay: 60s;
     animation-fill-mode: forwards;
 }
 
@@ -119,6 +134,11 @@
 }
 
 @keyframes an5 {
+    0% { top: -3rem; opacity: 0; }
+    75% { top: 25%; opacity: 1; }
+    100% { top: -3rem; opacity: 0; }
+}
+@keyframes an6 {
     0% { top: -3rem; opacity: 0; }
     75% { top: 25%; opacity: 1; }
     100% { top: 25%; opacity: 1; }
