@@ -163,7 +163,7 @@ body {
     font-size: 20px;
     margin-top: 20px;
     text-align: center;
-    top: 600px; /* Đặt vị trí dưới bức thư */
+    top: 65%; /* Đặt vị trí dưới bức thư */
     left: 50%;
     transform: translateX(-50%); /* Căn giữa */
     white-space: nowrap; /* Không xuống dòng */
